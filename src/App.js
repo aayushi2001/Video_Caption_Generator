@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+import VideoPlayer from '../src/components/VideoPlayer';
 import './App.css';
+import { createRoot } from 'react-dom/client';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VideoPlayer />
     </div>
   );
 }
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
 
 export default App;
