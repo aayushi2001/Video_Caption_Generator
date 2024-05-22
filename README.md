@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Technical Decisions
+## Component-Based Architecture:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We used a component-based architecture, splitting the functionality into reusable components (App and VideoPlayer). This approach enhances maintainability and readability of the code.
+The App component serves as the main container, while the VideoPlayer component handles the video playback and caption management.
 
-## Available Scripts
+## State Management:
 
-In the project directory, you can run:
+React's useState and useRef hooks were used to manage the state of the application. useState was used for managing video URL, caption text, timestamp, and the list of captions. useRef was used for accessing the video element directly.
 
-### `npm start`
+## Dynamic Caption Display:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The getCurrentCaption function was implemented to dynamically display the current caption based on the video's current playback time. This provides a real-time update of captions as the video plays.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## CSS and Styling:
 
-### `npm test`
+Bootstrap was used for quick and responsive styling, while custom CSS in App.css provided specific styles for the video container, captions, and lists. This combination ensures a modern and user-friendly interface.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# User Experience Considerations
 
-### `npm run build`
+## Ease of Use:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The UI is designed to be intuitive with labeled input fields for video URL, caption text, and timestamp. This makes it easy for users to add captions without needing technical knowledge.
+The 'Add Caption' button is prominently displayed, ensuring users can quickly add captions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Responsive Design:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Using Bootstrap ensures that the application is responsive and works well on various devices and screen sizes. This enhances accessibility and usability across different platforms.
 
-### `npm run eject`
+# Real-Time Feedback:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+As users play the video, captions are displayed in real-time, providing immediate feedback. This ensures users can see the effects of their inputs without delays, enhancing the interactive experience.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Trade-offs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Manual Timestamp Input:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Users have to manually enter the timestamp for each caption, which might not be the most user-friendly approach. An alternative could be to allow users to click a button while the video is playing to capture the current timestamp automatically.
 
-## Learn More
+## Simplistic Caption Management:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The current implementation doesn't allow for editing or deleting captions once added. Implementing these features would add complexity but improve user control over the captions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## No Validation on Inputs:
 
-### Code Splitting
+There is minimal validation on the inputs (e.g., ensuring timestamps are valid numbers). Adding more robust validation would improve user experience by preventing errors but would add complexity to the code.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Future Optimizations
 
-### Analyzing the Bundle Size
+## Enhanced Caption Management:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Implement features to edit and delete existing captions. This would provide users more control and flexibility over the captions they add.
 
-### Making a Progressive Web App
+## Automatic Timestamping:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Add a feature that allows users to set timestamps by clicking a button while the video is playing. This would make the process of adding captions more seamless and user-friendly.
 
-### Advanced Configuration
+## Advanced Styling and Animations:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Improve the visual appearance of captions with animations and more advanced styling options. This would make the captions more engaging and visually appealing.
 
-### Deployment
+## Validation and Error Handling:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Implement robust validation for inputs to ensure that the video URL is valid and that timestamps are correctly formatted numbers. This would prevent user errors and improve the overall reliability of the application.
 
-### `npm run build` fails to minify
+## Accessibility Enhancements:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Add accessibility features such as keyboard navigation and screen reader support to make the application usable for people with disabilities.
+
+## Backend Integration:
+
+For a more advanced version, integrate a backend to save captions, enabling users to store and retrieve their work. This would be beneficial for collaborative projects or saving work for later use.
