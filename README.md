@@ -1,6 +1,6 @@
 To start the project run the command
 
-# npm start
+### npm start
 
 # Technical Decisions
 ## Component-Based Architecture:
